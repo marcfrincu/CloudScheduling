@@ -1,0 +1,116 @@
+number_clouds = 1
+
+number_datacenters_per_cloud = 1
+
+# This parameter contains the location of the service that is queried by the scheduler to get node, component & platform data. This is
+# also the place where the scheduler sends the new schedule
+# not used in simulation
+mosaic_provisioner_url = http://localhost:8084/ProvisionerServlet/ProvisionerServlet
+
+# specifies whether certain parameters such as no_component_types, component_connection_table,component_read_rate, component_write_rate can be set from within the scheduler. 
+# not used in simulation
+can_be_overriden = true
+
+###########################
+# Maximum number of nodes #
+######## Options ##########
+# -1 for unknown value    #
+# int otherwise           #
+###########################
+
+max_number_nodes = 20
+
+###############################
+# The type of nodes in use    #
+######## Options ##############
+# UNIFORM for uniform         #
+# UNRELATED for unrelated     #
+# HOMOGENEOUS for homogeneous #
+###############################
+
+node_type = HOMOGENEOUS
+
+###########################################
+# The variation of load on each node      #
+# Only if the maximum number of nodes     #
+# is known. Otherwise use a probabilistic #
+# method.								  #
+############## Options ####################
+# for uniform: values separated by ,      #
+# node_variation = "a,b,c"
+# for unrelated: values separated by , on #
+#    lines and ; for lines                #
+#    each line must have                  # 
+#       no_component_types values         # 
+# node_variation = "a,b;c,d;"             #
+# for homogeneous: -1                     # 
+# for custom values: -2                   #
+#	 these values need to be given        #
+#    inside the application               #
+#    NOT USED AT THE MOMENT               #
+###########################################
+
+node_variation = -1
+  
+#######################################  
+# The weight of CPU, memory & network #
+# for every node. Between 0 and 1     #
+# inclusively.                        #  
+#######################################
+  
+node_cpu_weight = 1
+node_memory_weight = 0
+node_network_weight =  0
+
+###################################
+# Maximum admissible load per node #
+###################################
+
+max_node_load_threshold = 40
+
+###################################
+# Minimum admissible load per node #
+###################################
+
+min_node_load_threshold = 40
+
+
+################################################
+# Number of component types in the application #
+################################################
+
+no_component_types = 3
+
+##############################################
+# The read/write rate of each component type #
+# No unit of measure given                   #
+##############################################
+
+component_read_rate = 100,50,50
+component_write_rate = 100,40,40
+
+########################################################
+# The component connection table as a dependency graph #
+# Each column is separated by , and lines by ;         #                    
+# Each line must have no_component_types column        #
+########################################################
+
+component_connection_table = 0,1,0;0,0,1;0,0,0
+
+################################################
+# The duration on any scale for the simulation #
+################################################
+
+time_span = 1
+
+#####################################
+# Method for generating web servers #
+# The server is the main component  #
+# after which all others scale      #
+########### Options: ################
+# POLYNOMIAL                        #
+# WEIBULL;shape,scale               #
+# PARETO;shape,minimumValue         # 
+#####################################
+
+web_server_generation_method = POLYNOMIAL  
